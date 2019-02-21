@@ -33,7 +33,10 @@ bindkey '^[[1;5C' forward-word    # Ctrl + Left Arrow: go to the beginning of wo
 bindkey '^[[1;5D' backward-word   # Ctrl + Right Arrow: go to the end of word
 bindkey '^K' kill-line            # Ctrl + K: delete line
 bindkey '^[[H' beginning-of-line  # Home: go to the beginning of line
+bindkey '^[[1~' beginning-of-line # Home: go to the beginning of line in Tmux
 bindkey '^[[F' end-of-line        # End: go to the end of line
+bindkey '^[[4~' end-of-line       # End: go to the end of line in Tmux
+bindkey '^R' history-incremental-search-backward  # Ctrl + R: search history in Tmux
 
 # Completion
 zstyle ':completion:*' menu select  # Show interactive menu to select directory
