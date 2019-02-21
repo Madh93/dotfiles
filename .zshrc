@@ -3,6 +3,7 @@
 #   2) Zplug
 #   3) Tools
 #   4) Aliases
+#   5) External
 
 
 #--------#
@@ -34,6 +35,8 @@ bindkey '^K' kill-line            # Ctrl + K: delete line
 bindkey '^[[H' beginning-of-line  # Home: go to the beginning of line
 bindkey '^[[F' end-of-line        # End: go to the end of line
 
+# Completion
+# zstyle ':completion:*' menu select  # Show interactive menu to select directory
 
 #----------#
 # 2) Zplug #
@@ -52,7 +55,7 @@ source ~/.zplug/init.zsh
 zplug "themes/agnoster", from:oh-my-zsh, as:theme
 
 # Plugins
-# ...
+zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
 
 # Install plugins
 if ! zplug check --verbose; then
@@ -63,7 +66,7 @@ if ! zplug check --verbose; then
 fi
 
 # Load plugins
-zplug load --verbose
+zplug load
 
 
 #----------#
@@ -72,6 +75,8 @@ zplug load --verbose
 
 #------ Ruby ------#
 
+RUBY_VERSION='2.6.1'
+
 # Load chruby
 [ -f /usr/share/chruby/chruby.sh ] && source /usr/share/chruby/chruby.sh
 
@@ -79,4 +84,54 @@ zplug load --verbose
 [ -f /usr/share/chruby/auto.sh ] && source /usr/share/chruby/auto.sh
 
 # Set default ruby version
-chruby ruby-2.6.1
+if [[ -d ~/.rubies/ruby-$RUBY_VERSION ]]; then
+  chruby ruby-$RUBY_VERSION
+else
+  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $RUBY_VERSION is not installed!"
+fi
+
+#------ Vim ------#
+
+EDITOR=vim
+
+
+#------------#
+# 4) Aliases #
+#------------#
+
+# Basics
+alias ls='ls --color=auto'
+alias la='ls -a --color=auto'
+alias ll='ls -l --color=auto'
+alias l='ls -la --color=auto'
+alias md='mkdir -p'
+alias df='df -h'
+alias free='free -m'
+alias vi='vim'
+
+# Utils
+alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
+alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
+
+# Manjaro/Pacman
+alias pacman-clean='sudo pacman -Sc'
+alias pacman-list-date='expac --timefmt="%Y-%m-%d %T" "%l\t%n" | sort'
+alias pacman-list-size='expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel | sort)) | sort -n'
+alias pacman-remove='sudo pacman -Rsdn $(pacman -Qqdt)'
+
+# Git
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
+
+# Python
+alias pipr='pip install -r requirements.txt'
+alias venv='source .venv/bin/activate'
+alias venvc='virtualenv -p python3 .venv && source .venv/bin/activate && pip install -r requirements.txt'
+
+
+#-------------#
+# 5) External #
+#-------------#
+
+if [[ -f ~/.zshrc.local ]]; then
+    source ~/.zshrc.local
+fi
