@@ -36,7 +36,10 @@ bindkey '^[[H' beginning-of-line  # Home: go to the beginning of line
 bindkey '^[[F' end-of-line        # End: go to the end of line
 
 # Completion
-# zstyle ':completion:*' menu select  # Show interactive menu to select directory
+zstyle ':completion:*' menu select  # Show interactive menu to select directory
+
+# Disable 'Ctrl-s'
+stty -ixon
 
 #----------#
 # 2) Zplug #
