@@ -62,6 +62,7 @@ zplug "themes/agnoster", from:oh-my-zsh, as:theme
 
 # Plugins
 zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
+zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
 
 # Install plugins
 if ! zplug check --verbose; then
@@ -73,6 +74,14 @@ fi
 
 # Load plugins
 zplug load
+
+# Plugins Configuration
+
+#------ PJ ------#
+PROJECT_PATHS=(~/Workspace ~/Workspace/repos)
+c() {
+  pj $@
+}
 
 
 #----------#
@@ -116,6 +125,7 @@ alias free='free -m'
 alias vi='vim'
 
 # Utils
+alias dot='~/.dotfiles'
 alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
 alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
 
