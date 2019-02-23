@@ -23,7 +23,7 @@ setopt HIST_IGNORE_SPACE  # Do not remember commands that start with a whitespac
 setopt CORRECT            # Suggest command corrections
 setopt COMPLETE_ALIASES   # Aliases completions as if they were commands
 setopt IGNORE_EOF         # Explicit exit with 'logout' or 'exit'
-setopt AUTO_CD            # change directory by typing directory name
+setopt AUTO_CD            # Change directory by typing directory name
 
 # Bindkeys
 # To show current bindkeys run: bindkey
@@ -40,6 +40,7 @@ bindkey '^R' history-incremental-search-backward  # Ctrl + R: search history in 
 
 # Completion
 zstyle ':completion:*' menu select  # Show interactive menu to select directory
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'  # CD with autocompletion
 
 # Disable 'Ctrl-s'
 stty -ixon
