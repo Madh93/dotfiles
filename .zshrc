@@ -63,6 +63,7 @@ zplug "themes/agnoster", from:oh-my-zsh, as:theme
 # Plugins
 zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
 zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
+zplug "rupa/z", use:z.sh              # Directories jump based on frecency
 
 # Install plugins
 if ! zplug check --verbose; then
