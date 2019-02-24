@@ -14,6 +14,7 @@
 #--------#
 
 DEFAULT_USER='migue'
+DEFAULT_HOME="/home/$DEFAULT_USER"
 
 # History
 HISTFILE=~/.zsh_history
@@ -135,7 +136,7 @@ POWERLEVEL9K_CUSTOM_VIRTUALENV='custom_virtualenv'
 POWERLEVEL9K_CUSTOM_VIRTUALENV_BACKGROUND='blue'
 
 #------ PJ ------#
-PROJECT_PATHS=(~/Workspace ~/Workspace/repos)
+PROJECT_PATHS=($DEFAULT_HOME/Workspace $DEFAULT_HOME/Workspace/repos)
 c() {
   pj $@
 }
@@ -147,7 +148,7 @@ c() {
 
 #------ Ruby ------#
 
-RUBY_VERSION='2.6.1'
+MY_RUBY_VERSION='2.6.1'
 
 # Load chruby
 [ -f /usr/share/chruby/chruby.sh ] && source /usr/share/chruby/chruby.sh
@@ -156,10 +157,10 @@ RUBY_VERSION='2.6.1'
 [ -f /usr/share/chruby/auto.sh ] && source /usr/share/chruby/auto.sh
 
 # Set default ruby version
-if [[ -d ~/.rubies/ruby-$RUBY_VERSION ]]; then
-  chruby ruby-$RUBY_VERSION
+if [[ -d $DEFAULT_HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
+  [[ $USER == $DEFAULT_USER ]] && chruby ruby-$MY_RUBY_VERSION
 else
-  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $RUBY_VERSION is not installed!"
+  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed!"
 fi
 
 #------ Vim ------#
@@ -182,7 +183,7 @@ alias free='free -m'
 alias vi='vim'
 
 # Utils
-alias dot='~/.dotfiles'
+alias dot="$DEFAULT_HOME/.dotfiles"
 alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
 alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
 
@@ -209,6 +210,6 @@ alias venvc='virtualenv -p python3 .venv && source .venv/bin/activate && pip ins
 # 5) External #
 #-------------#
 
-if [[ -f ~/.zshrc.local ]]; then
-    source ~/.zshrc.local
+if [[ -f $DEFAULT_HOME/.zshrc.local ]]; then
+    source $DEFAULT_HOME/.zshrc.local
 fi
