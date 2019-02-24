@@ -5,10 +5,15 @@
 #   4) Aliases
 #   5) External
 
+# Requirements:
+# - Packages: 'git', 'fzf'
+# - Fonts: 'Nerd Fonts'
 
 #--------#
 # 1) ZSH #
 #--------#
+
+DEFAULT_USER='migue'
 
 # History
 HISTFILE=~/.zsh_history
@@ -59,7 +64,7 @@ fi
 source ~/.zplug/init.zsh
 
 # Theme
-zplug "themes/agnoster", from:oh-my-zsh, as:theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 
 # Plugins
 zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
@@ -79,6 +84,55 @@ fi
 zplug load
 
 # Plugins Configuration
+
+#------ Powerlevel9k Theme ------#
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  root_indicator
+  host
+  dir
+  custom_ruby
+  custom_virtualenv
+  vcs
+)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+  status
+  command_execution_time
+)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰─> "
+POWERLEVEL9K_SSH_ICON="\uf489"
+POWERLEVEL9K_DIR_HOME_BACKGROUND='darkcyan'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='darkcyan'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='darkcyan'
+POWERLEVEL9K_DIR_ETC_BACKGROUND='darkcyan'
+POWERLEVEL9K_CARRIAGE_RETURN_ICON="\u2718"
+POWERLEVEL9K_EXECUTION_TIME_ICON="\uf251"
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='black'
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='white'
+POWERLEVEL9K_VCS_BRANCH_ICON="\uf126"
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON="\uf113"
+POWERLEVEL9K_VCS_GIT_GITLAB_ICON="\uf296"
+
+custom_ruby() {
+  [[ ! -f "Gemfile" ]] && return
+  echo -n "\ue739 $RUBY_VERSION"
+}
+POWERLEVEL9K_CUSTOM_RUBY='custom_ruby'
+POWERLEVEL9K_CUSTOM_RUBY_BACKGROUND='red'
+
+custom_virtualenv() {
+  local virtualenv_path="$VIRTUAL_ENV"
+  [[ ! -f "requirements.txt" ]] && return
+  if [[ "$virtualenv_path" ]]; then
+    echo -n "\ue235 ${virtualenv_path:t}"
+  else
+    echo -n "\ue235"
+  fi
+}
+POWERLEVEL9K_CUSTOM_VIRTUALENV='custom_virtualenv'
+POWERLEVEL9K_CUSTOM_VIRTUALENV_BACKGROUND='blue'
 
 #------ PJ ------#
 PROJECT_PATHS=(~/Workspace ~/Workspace/repos)
@@ -131,6 +185,10 @@ alias vi='vim'
 alias dot='~/.dotfiles'
 alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
 alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
+
+# Powerlevel9k Theme
+alias theme-down='prompt_powerlevel9k_teardown'
+alias theme-up='prompt_powerlevel9k_setup'
 
 # Manjaro/Pacman
 alias pacman-clean='sudo pacman -Sc'
