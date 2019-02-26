@@ -72,6 +72,7 @@ zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
 zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
 zplug "rupa/z", use:z.sh              # Directories jump based on frecency
 zplug "changyuheng/fz", defer:1       # Fuzzy search to tab completion of z
+zplug "junegunn/fzf", use:shell/key-bindings.zsh  # Ctrl+R using fuzzy search
 
 # Install plugins
 if ! zplug check --verbose; then
