@@ -200,6 +200,8 @@ alias pacman-remove='sudo pacman -Rsdn $(pacman -Qqdt)'
 
 # Git
 alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
+alias gpom='git pull origin master'
+alias gpod='git pull origin develop'
 
 # Python
 alias pipr='pip install -r requirements.txt'
