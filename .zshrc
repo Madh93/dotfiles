@@ -147,8 +147,20 @@ c() {
 # 3) Tools #
 #----------#
 
-#------ Ruby ------#
+#----- Android ----#
+if [[ -d $DEFAULT_HOME/.androidsdk ]]; then
+  export ANDROID_HOME=$DEFAULT_HOME/.androidsdk
+  export PATH=$ANDROID_HOME/tools/bin:$PATH
+  alias adb="$ANDROID_HOME/platform-tools/adb"
+  # NOTES:
+  # - sdkmanager "platform-tools"
+  # - sdkmanager --licenses
+fi
 
+#------ Java ------#
+export JAVA_HOME=/usr/lib/jvm/default
+
+#------ Ruby ------#
 MY_RUBY_VERSION='2.6.1'
 
 # Load chruby
@@ -165,7 +177,6 @@ else
 fi
 
 #------ Vim ------#
-
 export EDITOR=vim
 
 
