@@ -160,6 +160,14 @@ fi
 #------ Java ------#
 export JAVA_HOME=/usr/lib/jvm/default
 
+#------ Node ------#
+if [[ -d $DEFAULT_HOME/.npm-global ]]; then
+  export NPM_HOME=$DEFAULT_HOME/.npm-global
+  export PATH=$NPM_HOME/bin:$PATH
+  # NOTES:
+  # - npm config set prefix '~/.npm-global'
+fi
+
 #------ Ruby ------#
 MY_RUBY_VERSION='2.6.1'
 
