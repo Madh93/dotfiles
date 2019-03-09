@@ -166,7 +166,7 @@ fi
 
 #------ Vim ------#
 
-EDITOR=vim
+export EDITOR=vim
 
 
 #------------#
