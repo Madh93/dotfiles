@@ -153,7 +153,7 @@ if [[ -d $DEFAULT_HOME/.androidsdk ]]; then
   export PATH=$ANDROID_HOME/tools/bin:$PATH
   alias adb="$ANDROID_HOME/platform-tools/adb"
   # NOTES:
-  # - sdkmanager "platform-tools"
+  # - sdkmanager "platform-tools" "build-tools"
   # - sdkmanager --licenses
 fi
 
@@ -167,6 +167,9 @@ if [[ -d $DEFAULT_HOME/.npm-global ]]; then
   # NOTES:
   # - npm config set prefix '~/.npm-global'
 fi
+
+#----- Python -----#
+export PYTHONSTARTUP=$DEFAULT_HOME/.pythonrc
 
 #------ Ruby ------#
 MY_RUBY_VERSION='2.6.1'
