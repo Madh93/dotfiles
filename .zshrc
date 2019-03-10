@@ -157,8 +157,11 @@ if [[ -d $DEFAULT_HOME/.androidsdk ]]; then
   # - sdkmanager --licenses
 fi
 
+#------- AWS ------#
+[ -f /usr/bin/aws_zsh_completer.sh ] && source /usr/bin/aws_zsh_completer.sh
+
 #------ Java ------#
-export JAVA_HOME=/usr/lib/jvm/default
+[ -d /usr/lib/jvm/default ] && export JAVA_HOME=/usr/lib/jvm/default
 
 #------ Node ------#
 if [[ -d $DEFAULT_HOME/.npm-global ]]; then
