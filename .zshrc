@@ -33,15 +33,17 @@ setopt AUTO_CD            # Change directory by typing directory name
 
 # Bindkeys
 # To show current bindkeys run: bindkey
-bindkey '^[[3~' delete-char       # Del: delete character
-bindkey '^[[3;5~' delete-word     # Ctrl + Del: delete word
-bindkey '^[[1;5C' forward-word    # Ctrl + Left Arrow: go to the beginning of word
-bindkey '^[[1;5D' backward-word   # Ctrl + Right Arrow: go to the end of word
-bindkey '^K' kill-line            # Ctrl + K: delete line
-bindkey '^[[H' beginning-of-line  # Home: go to the beginning of line
-bindkey '^[[1~' beginning-of-line # Home: go to the beginning of line in Tmux
-bindkey '^[[F' end-of-line        # End: go to the end of line
-bindkey '^[[4~' end-of-line       # End: go to the end of line in Tmux
+# To get shortcuts run: cat -v (and press whatever)
+bindkey '^[[3~' delete-char         # Del: delete character
+bindkey '^H' vi-backward-kill-word  # Ctrl + Backspace: delete word
+bindkey '^[[3;5~' delete-word       # Ctrl + Del: delete word alternative
+bindkey '^[[1;5C' forward-word      # Ctrl + Left Arrow: go to the beginning of word
+bindkey '^[[1;5D' backward-word     # Ctrl + Right Arrow: go to the end of word
+bindkey '^K' vi-kill-line           # Ctrl + K: delete line
+bindkey '^[[H' beginning-of-line    # Home: go to the beginning of line
+bindkey '^[[1~' beginning-of-line   # Home: go to the beginning of line in Tmux
+bindkey '^[[F' end-of-line          # End: go to the end of line
+bindkey '^[[4~' end-of-line         # End: go to the end of line in Tmux
 bindkey '^R' history-incremental-search-backward  # Ctrl + R: search history in Tmux
 
 # Completion
