@@ -175,7 +175,7 @@ if [[ -d $DEFAULT_HOME/.npm-global ]]; then
 fi
 
 #----- Python -----#
-if [[ ! -d $DEFAULT_HOME/.pythonrc ]]; then
+if [[ ! -f $DEFAULT_HOME/.pythonrc ]]; then
   echo "import rlcompleter, readline" >> $DEFAULT_HOME/.pythonrc
   echo "readline.parse_and_bind('tab:complete')" >> $DEFAULT_HOME/.pythonrc
 fi
