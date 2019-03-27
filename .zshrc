@@ -239,8 +239,11 @@ alias gpod='git pull origin develop'
 # Python
 alias pipr='pip install -r requirements.txt'
 alias venv='source .venv/bin/activate'
-alias venvc='virtualenv -p python3 .venv && source .venv/bin/activate && pip install -r requirements.txt'
-
+venvc() {
+  virtualenv -p python3 .venv && source .venv/bin/activate
+  [ -f requirements.txt ] && pip install -r requirements.txt
+  [ -f test_requirements.txt ] && pip install -r test_requirements.txt
+}
 
 #-------------#
 # 5) External #
