@@ -76,6 +76,8 @@ zplug "plugins/terraform", from:oh-my-zsh   # Terraform completions
 zplug "rupa/z", use:z.sh              # Directories jump based on frecency
 zplug "changyuheng/fz", defer:1       # Fuzzy search to tab completion of z
 zplug "junegunn/fzf", use:shell/key-bindings.zsh  # Ctrl+R using fuzzy search
+zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh"  # Tmuxinator completions
+
 
 # Install plugins
 if ! zplug check --verbose; then
