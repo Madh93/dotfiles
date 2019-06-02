@@ -213,10 +213,14 @@ alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
 alias ll='ls -l --color=auto'
 alias l='ls -la --color=auto'
+alias grep='grep --color=auto'
 alias md='mkdir -p'
 alias df='df -h'
 alias free='free -m'
 alias vi='vim'
+alias path='echo -e "${PATH//:/\n}"'
+alias ...='cd ../../'
+alias ....='cd ../../../'
 
 # Utils
 alias dot="$DEFAULT_HOME/.dotfiles"
