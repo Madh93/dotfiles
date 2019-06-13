@@ -154,12 +154,16 @@ c() {
 
 #----- Android ----#
 if [[ -d $DEFAULT_HOME/.androidsdk ]]; then
+  # NOTES:
+  # It requiers Java 8 (jdk8-openjdk)
+  # - sdkmanager --update
+  # - sdkmanager "platform-tools" "build-tools;28.0.3"
+  # - sdkmanager --licenses
+
+  [ -d /usr/lib/jvm/java-8-openjdk ] && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
   export ANDROID_HOME=$DEFAULT_HOME/.androidsdk
   export PATH=$ANDROID_HOME/tools/bin:$PATH
   alias adb="$ANDROID_HOME/platform-tools/adb"
-  # NOTES:
-  # - sdkmanager "platform-tools" "build-tools"
-  # - sdkmanager --licenses
 fi
 
 #------- AWS ------#
@@ -169,7 +173,9 @@ fi
 export MAKEFLAGS="-j$(($(nproc)+1))"
 
 #------ Java ------#
-[ -d /usr/lib/jvm/default ] && export JAVA_HOME=/usr/lib/jvm/default
+if [[ ! -d $DEFAULT_HOME/.androidsdk ]]; then
+  [ -d /usr/lib/jvm/default ] && export JAVA_HOME=/usr/lib/jvm/default
+fi
 
 #------ Node ------#
 MY_NODE_VERSION='12.4.0'
