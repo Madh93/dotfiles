@@ -172,11 +172,19 @@ export MAKEFLAGS="-j$(($(nproc)+1))"
 [ -d /usr/lib/jvm/default ] && export JAVA_HOME=/usr/lib/jvm/default
 
 #------ Node ------#
-if [[ -d $DEFAULT_HOME/.npm-global ]]; then
-  export NPM_HOME=$DEFAULT_HOME/.npm-global
-  export PATH=$NPM_HOME/bin:$PATH
-  # NOTES:
-  # - npm config set prefix '~/.npm-global'
+MY_NODE_VERSION='12.4.0'
+
+# (Lazy) Load nvm
+if [ -f /usr/share/nvm/nvm.sh ]; then
+  export NVM_DIR="$DEFAULT_HOME/.nvm"
+  alias nvm='unalias nvm node npm && source /usr/share/nvm/nvm.sh && nvm'
+  alias node='unalias nvm node npm && source /usr/share/nvm/nvm.sh && node'
+  alias npm='unalias nvm node npm && source /usr/share/nvm/nvm.sh && npm'
+fi
+
+# Check my node version
+if [[ ! -d $DEFAULT_HOME/.nvm/versions/node/v$MY_NODE_VERSION ]]; then
+  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Node $MY_NODE_VERSION is not installed! Try: nvm install $MY_NODE_VERSION"
 fi
 
 #----- Python -----#
@@ -200,7 +208,7 @@ MY_RUBY_VERSION='2.6.2'
 if [[ -d $DEFAULT_HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
   [[ $USER == $DEFAULT_USER ]] && chruby ruby-$MY_RUBY_VERSION
 else
-  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed!"
+  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed! Try: ruby-install ruby $MY_RUBY_VERSION"
 fi
 
 #------ Vim ------#
