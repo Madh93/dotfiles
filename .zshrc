@@ -258,6 +258,20 @@ alias pacman-remove='sudo pacman -Rsdn $(pacman -Qqdt)'
 alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
 alias gpom='git pull origin master'
 alias gpod='git pull origin develop'
+unalias gco
+gco() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+gcr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
 
 # Python
 alias pipr='pip install -r requirements.txt'
