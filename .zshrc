@@ -173,6 +173,12 @@ fi
 #------- C --------#
 export MAKEFLAGS="-j$(($(nproc)+1))"
 
+
+#----- Docker -----#
+dockexec() {
+  docker exec -it $(docker ps --format '{{.Names}}' | fzf) ${1:-sh}
+}
+
 #------ Java ------#
 if [[ ! -d $DEFAULT_HOME/.androidsdk ]]; then
   [ -d /usr/lib/jvm/default ] && export JAVA_HOME=/usr/lib/jvm/default
