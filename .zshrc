@@ -265,6 +265,7 @@ alias pacman-remove='sudo pacman -Rsdn $(pacman -Qqdt)'
 alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
 alias gpom='git pull origin master'
 alias gpod='git pull origin develop'
+alias gdf='git diff --name-only'
 unalias gco
 gco() {
   local branches branch
