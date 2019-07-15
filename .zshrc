@@ -45,6 +45,7 @@ bindkey '^[[1~' beginning-of-line   # Home: go to the beginning of line in Tmux
 bindkey '^[[F' end-of-line          # End: go to the end of line
 bindkey '^[[4~' end-of-line         # End: go to the end of line in Tmux
 bindkey '^R' history-incremental-search-backward  # Ctrl + R: search history in Tmux
+bindkey -s '^P' '/usr/local/bin/tmux-window\n'  # Ctrl + P: fuzzy search to find Tmux windows
 
 # Completion
 zstyle ':completion:*' menu select  # Show interactive menu to select directory
@@ -222,6 +223,13 @@ if [[ -d $DEFAULT_HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
   [[ $USER == $DEFAULT_USER ]] && chruby ruby-$MY_RUBY_VERSION
 else
   echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed! Try: ruby-install ruby $MY_RUBY_VERSION"
+fi
+
+#----- Tmux ------#
+if [[ ! -f /usr/local/bin/tmux-window ]]; then
+  echo "#! /bin/bash" >> /usr/local/bin/tmux-window
+  echo "tmux select-window -t\$(tmux list-sessions | grep attached | cut -d ':' -f1):\$(tmux list-windows | fzf | cut -c1)" >> /usr/local/bin/tmux-window
+  chmod +x /usr/local/bin/tmux-window || echo "Permissions issues to add tmux-window"
 fi
 
 #------ Vim ------#
