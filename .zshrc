@@ -210,7 +210,7 @@ fi
 export PYTHONSTARTUP=$DEFAULT_HOME/.pythonrc
 
 #------ Ruby ------#
-MY_RUBY_VERSION='2.6.2'
+MY_RUBY_VERSION='2.6.3'
 
 # Load chruby
 [ -f /usr/share/chruby/chruby.sh ] && source /usr/share/chruby/chruby.sh
