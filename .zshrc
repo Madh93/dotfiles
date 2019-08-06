@@ -228,7 +228,7 @@ fi
 #----- Tmux ------#
 if [[ ! -f /usr/local/bin/tmux-window ]]; then
   echo "#! /bin/bash" >> /usr/local/bin/tmux-window
-  echo "tmux select-window -t\$(tmux list-sessions | grep attached | cut -d ':' -f1):\$(tmux list-windows | fzf | cut -c1)" >> /usr/local/bin/tmux-window
+  echo "tmux select-window -t\$(tmux list-sessions | grep attached | cut -d ':' -f1):\$(tmux list-windows | fzf | cut -d ':' -f1)" >> /usr/local/bin/tmux-window
   chmod +x /usr/local/bin/tmux-window || echo "Permissions issues to add tmux-window"
 fi
 
