@@ -80,6 +80,7 @@ zplug "junegunn/fzf", use:shell/key-bindings.zsh  # Ctrl+R using fuzzy search
 zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh"  # Tmuxinator completions
 zplug "lukechilds/zsh-better-npm-completion", defer:2   # NPM completions
 zplug "plugins/pip", from:oh-my-zsh   # Pip completions
+zplug "plugins/golang", from:oh-my-zsh, ignore:oh-my-zsh.sh, defer:3   # Golang completions
 
 # Install plugins
 if ! zplug check --verbose; then
@@ -224,6 +225,9 @@ if [[ -d $DEFAULT_HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
 else
   echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed! Try: ruby-install ruby $MY_RUBY_VERSION"
 fi
+
+#------ Rust ------#
+[ -d $DEFAULT_HOME/.cargo ] && export PATH=$DEFAULT_HOME/.cargo/bin:$PATH
 
 #----- Tmux ------#
 if [[ ! -f /usr/local/bin/tmux-window ]]; then
