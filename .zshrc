@@ -73,14 +73,17 @@ zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 # Plugins
 zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
 zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
+zplug "plugins/bundler", from:oh-my-zsh   # Bundler completions
+zplug "plugins/golang", from:oh-my-zsh, ignore:oh-my-zsh.sh, defer:3   # Golang completions
+zplug "plugins/kitchen", from:oh-my-zsh   # Kitchen completions
+zplug "plugins/knife", from:oh-my-zsh   # Knife completions
+zplug "plugins/pip", from:oh-my-zsh   # Pip completions
 zplug "plugins/terraform", from:oh-my-zsh   # Terraform completions
 zplug "rupa/z", use:z.sh              # Directories jump based on frecency
 zplug "changyuheng/fz", defer:1       # Fuzzy search to tab completion of z
 zplug "junegunn/fzf", use:shell/key-bindings.zsh  # Ctrl+R using fuzzy search
 zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh"  # Tmuxinator completions
 zplug "lukechilds/zsh-better-npm-completion", defer:2   # NPM completions
-zplug "plugins/pip", from:oh-my-zsh   # Pip completions
-zplug "plugins/golang", from:oh-my-zsh, ignore:oh-my-zsh.sh, defer:3   # Golang completions
 
 # Install plugins
 if ! zplug check --verbose; then
@@ -229,6 +232,9 @@ fi
 #------ Rust ------#
 [ -d $DEFAULT_HOME/.cargo ] && export PATH=$DEFAULT_HOME/.cargo/bin:$PATH
 
+#------ SSH ------#
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 #----- Tmux ------#
 if [[ ! -f /usr/local/bin/tmux-window ]]; then
   echo "#! /bin/bash" >> /usr/local/bin/tmux-window
@@ -257,6 +263,7 @@ alias vi='vim'
 alias path='echo -e "${PATH//:/\n}"'
 alias ...='cd ../../'
 alias ....='cd ../../../'
+alias please='sudo'
 
 # Utils
 alias dot="$DEFAULT_HOME/.dotfiles"
