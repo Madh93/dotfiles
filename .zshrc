@@ -178,6 +178,9 @@ fi
 #------- C --------#
 export MAKEFLAGS="-j$(($(nproc)+1))"
 
+#-- DigitalOcean --#
+[ -f /usr/local/bin/doctl ] && source <(doctl completion zsh)
+
 #----- Docker -----#
 dockexec() {
   docker exec -it $(docker ps --format '{{.Names}}' | fzf) ${1:-sh}
