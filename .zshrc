@@ -186,6 +186,9 @@ dockexec() {
   docker exec -it $(docker ps --format '{{.Names}}' | fzf) ${1:-sh}
 }
 
+#-- Google Cloud --#
+[ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
+
 #------- Go -------#
 export GOPATH="$DEFAULT_HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
