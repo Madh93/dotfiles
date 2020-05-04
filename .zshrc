@@ -318,6 +318,9 @@ venvc() {
   [ -f test_requirements.txt ] && pip install -r test_requirements.txt
 }
 
+# Kubernetes
+alias k='kubectl'
+
 #-------------#
 # 5) External #
 #-------------#
