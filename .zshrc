@@ -137,10 +137,9 @@ POWERLEVEL9K_CUSTOM_RUBY_BACKGROUND='red'
 
 custom_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
-  [[ ! -f "requirements.txt" ]] && return
   if [[ "$virtualenv_path" ]]; then
     echo -n "\ue235 ${virtualenv_path:t}"
-  else
+  elif [[ -f "requirements.txt" || -f "setup.py" || -d ".venv" ]]; then
     echo -n "\ue235"
   fi
 }
