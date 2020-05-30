@@ -27,7 +27,6 @@ setopt HIST_IGNORE_SPACE  # Do not remember commands that start with a whitespac
 
 # General options
 setopt CORRECT            # Suggest command corrections
-setopt COMPLETE_ALIASES   # Aliases completions as if they were commands
 setopt IGNORE_EOF         # Explicit exit with 'logout' or 'exit'
 setopt AUTO_CD            # Change directory by typing directory name
 
