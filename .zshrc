@@ -292,8 +292,8 @@ alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|d
 alias gpom='git pull origin master'
 alias gpod='git pull origin develop'
 alias gdf='git diff --name-only'
-unalias gco
-gco() {
+unalias gc
+gc() {
   local branches branch
   branches=$(git --no-pager branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
