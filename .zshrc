@@ -276,6 +276,7 @@ alias please='sudo'
 alias dot="$DEFAULT_HOME/.dotfiles"
 alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
 alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
+alias clip='xclip -selection clipboard' # Copy to clipboard
 
 # Powerlevel9k Theme
 alias theme-down='prompt_powerlevel9k_teardown'
