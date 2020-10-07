@@ -197,7 +197,7 @@ if [[ ! -d $DEFAULT_HOME/.androidsdk ]]; then
 fi
 
 #------ Node ------#
-MY_NODE_VERSION='12.4.0'
+MY_NODE_VERSION='12.16.1'
 
 # (Lazy) Load nvm
 if [ -f /usr/share/nvm/nvm.sh ]; then
