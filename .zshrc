@@ -104,6 +104,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   host
   dir
   custom_ruby
+  custom_terraform
   custom_virtualenv
   vcs
 )
@@ -133,6 +134,13 @@ custom_ruby() {
 }
 POWERLEVEL9K_CUSTOM_RUBY='custom_ruby'
 POWERLEVEL9K_CUSTOM_RUBY_BACKGROUND='red'
+
+custom_terraform() {
+  [[ ! -d ".terraform" ]] && return
+  echo -n "\ue5fc $(terraform workspace show)"
+}
+POWERLEVEL9K_CUSTOM_TERRAFORM='custom_terraform'
+POWERLEVEL9K_CUSTOM_TERRAFORM_BACKGROUND='grey74'
 
 custom_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
@@ -319,6 +327,9 @@ venvc() {
 
 # Kubernetes
 alias k='kubectl'
+
+# Terraform
+alias t='terraform'
 
 #-------------#
 # 5) External #
