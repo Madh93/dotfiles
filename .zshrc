@@ -13,9 +13,6 @@
 # 1) ZSH #
 #--------#
 
-DEFAULT_USER='migue'
-DEFAULT_HOME="/home/$DEFAULT_USER"
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000   # Lines in memory
@@ -154,7 +151,7 @@ POWERLEVEL9K_CUSTOM_VIRTUALENV='custom_virtualenv'
 POWERLEVEL9K_CUSTOM_VIRTUALENV_BACKGROUND='blue'
 
 #------ PJ ------#
-PROJECT_PATHS=($DEFAULT_HOME/Workspace $DEFAULT_HOME/Workspace/repos)
+PROJECT_PATHS=($HOME/Workspace $HOME/Workspace/repos)
 c() {
   pj $@
 }
@@ -165,7 +162,7 @@ c() {
 #----------#
 
 #----- Android ----#
-if [[ -d $DEFAULT_HOME/.androidsdk ]]; then
+if [[ -d $HOME/.androidsdk ]]; then
   # NOTES:
   # It requiers Java 8 (jdk8-openjdk)
   # - sdkmanager --update
@@ -173,7 +170,7 @@ if [[ -d $DEFAULT_HOME/.androidsdk ]]; then
   # - sdkmanager --licenses
 
   [ -d /usr/lib/jvm/java-8-openjdk ] && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-  export ANDROID_HOME=$DEFAULT_HOME/.androidsdk
+  export ANDROID_HOME=$HOME/.androidsdk
   export PATH=$ANDROID_HOME/tools/bin:$PATH
   alias adb="$ANDROID_HOME/platform-tools/adb"
 fi
@@ -196,11 +193,11 @@ dockexec() {
 [ -f /opt/google-cloud-sdk/completion.zsh.inc ] && source /opt/google-cloud-sdk/completion.zsh.inc
 
 #------- Go -------#
-export GOPATH="$DEFAULT_HOME/.go"
+export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
 
 #------ Java ------#
-if [[ ! -d $DEFAULT_HOME/.androidsdk ]]; then
+if [[ ! -d $HOME/.androidsdk ]]; then
   [ -d /usr/lib/jvm/default ] && export JAVA_HOME=/usr/lib/jvm/default
 fi
 
@@ -209,24 +206,24 @@ MY_NODE_VERSION='12.16.1'
 
 # (Lazy) Load nvm
 if [ -f /usr/share/nvm/nvm.sh ]; then
-  export NVM_DIR="$DEFAULT_HOME/.nvm"
+  export NVM_DIR="$HOME/.nvm"
   alias nvm='unalias nvm node npm && source /usr/share/nvm/nvm.sh && nvm'
   alias node='unalias nvm node npm && source /usr/share/nvm/nvm.sh && node'
   alias npm='unalias nvm node npm && source /usr/share/nvm/nvm.sh && npm'
 fi
 
 # Check my node version
-if [[ ! -d $DEFAULT_HOME/.nvm/versions/node/v$MY_NODE_VERSION ]]; then
+if [[ ! -d $HOME/.nvm/versions/node/v$MY_NODE_VERSION ]]; then
   echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Node $MY_NODE_VERSION is not installed! Try: nvm install $MY_NODE_VERSION"
 fi
 
 #----- Python -----#
-if [[ ! -f $DEFAULT_HOME/.pythonrc ]]; then
-  echo "import rlcompleter, readline" >> $DEFAULT_HOME/.pythonrc
-  echo "readline.parse_and_bind('tab:complete')" >> $DEFAULT_HOME/.pythonrc
+if [[ ! -f $HOME/.pythonrc ]]; then
+  echo "import rlcompleter, readline" >> $HOME/.pythonrc
+  echo "readline.parse_and_bind('tab:complete')" >> $HOME/.pythonrc
 fi
 
-export PYTHONSTARTUP=$DEFAULT_HOME/.pythonrc
+export PYTHONSTARTUP=$HOME/.pythonrc
 
 #------ Ruby ------#
 MY_RUBY_VERSION='2.7.1'
@@ -238,14 +235,14 @@ MY_RUBY_VERSION='2.7.1'
 [ -f /usr/share/chruby/auto.sh ] && source /usr/share/chruby/auto.sh
 
 # Set default ruby version
-if [[ -d $DEFAULT_HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
-  [[ $USER == $DEFAULT_USER ]] && chruby ruby-$MY_RUBY_VERSION
+if [[ -d $HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
+  [[ $USER == $USER ]] && chruby ruby-$MY_RUBY_VERSION
 else
   echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed! Try: ruby-install ruby $MY_RUBY_VERSION"
 fi
 
 #------ Rust ------#
-[ -d $DEFAULT_HOME/.cargo ] && export PATH=$DEFAULT_HOME/.cargo/bin:$PATH
+[ -d $HOME/.cargo ] && export PATH=$HOME/.cargo/bin:$PATH
 
 #------ SSH ------#
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -281,7 +278,7 @@ alias ....='cd ../../../'
 alias please='sudo'
 
 # Utils
-alias dot="$DEFAULT_HOME/.dotfiles"
+alias dot="$HOME/.dotfiles"
 alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
 alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
 alias clip='xclip -selection clipboard' # Copy to clipboard
@@ -335,6 +332,6 @@ alias t='terraform'
 # 5) External #
 #-------------#
 
-if [[ -f $DEFAULT_HOME/.zshrc.local ]]; then
-    source $DEFAULT_HOME/.zshrc.local
+if [[ -f $HOME/.zshrc.local ]]; then
+    source $HOME/.zshrc.local
 fi
