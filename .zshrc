@@ -289,7 +289,7 @@ alias pacman-list-size='expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe
 alias pacman-remove='sudo pacman -Rsdn $(pacman -Qqdt)'
 
 # Git
-alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev|devel)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
 alias gpom='git pull origin master'
 alias gpod='git pull origin develop'
 alias gdf='git diff --name-only'
