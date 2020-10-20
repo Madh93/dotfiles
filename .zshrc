@@ -71,8 +71,6 @@ zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
 zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
 zplug "plugins/bundler", from:oh-my-zsh   # Bundler completions
 zplug "plugins/golang", from:oh-my-zsh, ignore:oh-my-zsh.sh, defer:3   # Golang completions
-zplug "plugins/kitchen", from:oh-my-zsh   # Kitchen completions
-zplug "plugins/knife", from:oh-my-zsh   # Knife completions
 zplug "plugins/pip", from:oh-my-zsh   # Pip completions
 zplug "plugins/terraform", from:oh-my-zsh   # Terraform completions
 zplug "rupa/z", use:z.sh              # Directories jump based on frecency
@@ -161,20 +159,6 @@ c() {
 # 3) Tools #
 #----------#
 
-#----- Android ----#
-if [[ -d $HOME/.androidsdk ]]; then
-  # NOTES:
-  # It requiers Java 8 (jdk8-openjdk)
-  # - sdkmanager --update
-  # - sdkmanager "platform-tools" "build-tools;28.0.3"
-  # - sdkmanager --licenses
-
-  [ -d /usr/lib/jvm/java-8-openjdk ] && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-  export ANDROID_HOME=$HOME/.androidsdk
-  export PATH=$ANDROID_HOME/tools/bin:$PATH
-  alias adb="$ANDROID_HOME/platform-tools/adb"
-fi
-
 #------- AWS ------#
 [ -f /usr/bin/aws_zsh_completer.sh ] && source /usr/bin/aws_zsh_completer.sh
 
@@ -195,11 +179,6 @@ dockexec() {
 #------- Go -------#
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
-
-#------ Java ------#
-if [[ ! -d $HOME/.androidsdk ]]; then
-  [ -d /usr/lib/jvm/default ] && export JAVA_HOME=/usr/lib/jvm/default
-fi
 
 #------ Node ------#
 MY_NODE_VERSION='12.16.1'
@@ -240,9 +219,6 @@ if [[ -d $HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
 else
   echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed! Try: ruby-install ruby $MY_RUBY_VERSION"
 fi
-
-#------ Rust ------#
-[ -d $HOME/.cargo ] && export PATH=$HOME/.cargo/bin:$PATH
 
 #------ SSH ------#
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
