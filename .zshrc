@@ -78,6 +78,8 @@ zplug "changyuheng/fz", defer:1       # Fuzzy search to tab completion of z
 zplug "junegunn/fzf", use:shell/key-bindings.zsh  # Ctrl+R using fuzzy search
 zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh"  # Tmuxinator completions
 zplug "lukechilds/zsh-better-npm-completion", defer:2   # NPM completions
+zplug "zsh-users/zsh-autosuggestions", defer:2       # Fish-like autosuggestions
+zplug "zsh-users/zsh-syntax-highlighting", defer:3   # Fish-like syntax highlighting
 
 # Install plugins
 if ! zplug check --verbose; then
