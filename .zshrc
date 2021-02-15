@@ -67,7 +67,6 @@ source ~/.zplug/init.zsh
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 
 # Plugins
-zplug "plugins/git", from:oh-my-zsh   # Useful git aliases
 zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
 zplug "plugins/bundler", from:oh-my-zsh   # Bundler completions
 zplug "plugins/golang", from:oh-my-zsh, ignore:oh-my-zsh.sh, defer:3   # Golang completions
@@ -272,18 +271,43 @@ alias pacman-list-size='expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe
 alias pacman-remove='sudo pacman -Rsdn $(pacman -Qqdt)'
 
 # Git
-alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev|devel)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
-alias gpom='git pull origin master'
-alias gpod='git pull origin develop'
+alias gcl='git clone --recurse-submodules'
+alias gst='git status'
+alias gb='git branch'
+alias gba='git branch -a'
+alias grv='git remote -v'
+alias gd='git diff'
 alias gdf='git diff --name-only'
-unalias gc
-gc() {
+alias gl='git log --graph'
+alias glf='git log --graph --stat'
+alias glo='git log --graph --oneline'
+alias ga='git add .'
+alias gco='git commit -m'
+alias gca='git commit --amend'
+alias gca!='git commit --amend --no-edit'
+alias gsta='git stash'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias grs='git reset --soft HEAD~1'
+alias grh='git reset --hard HEAD~1'
+alias gpom='git pull origin master'
+alias gpod='git pull origin devel'
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbd='git rebase devel'
+alias grbm='git rebase master'
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev|devel)\s*$)" | command xargs -n 1 git branch -d' # Delete merged branches
+alias gcd='git checkout devel'
+alias gcm='git checkout master'
+alias gcb='git checkout -b'
+gc() { # Git checkout
   local branches branch
   branches=$(git --no-pager branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
-gcr() {
+gcr() { # Git checkout (remotes included)
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
