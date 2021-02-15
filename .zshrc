@@ -350,6 +350,20 @@ alias dstrm='docker stack rm'
 
 # Kubernetes
 alias k='kubectl'
+alias ka='kubectl apply -f'
+alias kd='kubectl describe'
+alias kl='kubectl logs -f'
+alias kga='kubectl get all'
+alias kgp='kubectl get pods'
+alias kgpo='kubectl get pods -o wide'
+alias kgn='kubectl get nodes'
+alias kgns='kubectl get namespaces'
+alias kgs='kubectl get services'
+alias kc='kubectl config'
+alias kcc='kubectl config current-context'
+alias kcu='kubectl config use-context'
+alias kcgc='kubectl config get-contexts'
+alias kcv='kubectl config view'
 
 # Terraform
 alias t='terraform'
