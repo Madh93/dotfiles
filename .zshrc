@@ -329,6 +329,23 @@ alias k='kubectl'
 
 # Terraform
 alias t='terraform'
+alias ti='terraform init'
+alias tir='terraform init --reconfigure'
+alias tp='terraform plan'
+alias tf='terraform fmt'
+alias tfc='terraform fmt -check'
+alias tv='terraform validate'
+alias ta='terraform apply'
+alias tat='terraform apply -target='
+alias ta!='terraform apply -auto-approve'
+alias twl='terraform workspace list'
+alias twn='terraform workspace new'
+alias tws='terraform workspace select'
+alias tsl='terraform state list'
+alias tss='terraform state show'
+alias tsp='terraform state pull'
+alias tsr='terraform state rm'
+alias tt='terraform taint'
 
 #-------------#
 # 5) External #
