@@ -324,6 +324,30 @@ venvc() {
   [ -f test_requirements.txt ] && pip install -r test_requirements.txt
 }
 
+# Docker
+alias d='docker'
+alias dr='docker run --rm -it'
+alias dp='docker ps'
+alias dpa='docker ps -a'
+alias dpw='watch -n 1 -d docker ps'
+alias drm='docker container prune'
+alias di='docker image ls'
+alias dip='docker image prune'
+alias dirm='docker image rm'
+alias dn='docker network ls'
+alias dnp='docker network prune'
+alias dnrm='docker network rm'
+alias dcu='docker-compose up'
+alias dcud='docker-compose up -d'
+alias dcd='docker-compose down -v'
+alias dse='docker service ls'
+alias dsep='docker service ps'
+alias dsel='docker service logs -f'
+alias dseu='docker service update --force'
+alias dst='docker stack ls'
+alias dstd='docker stack deploy -c docker-compose.yml'
+alias dstrm='docker stack rm'
+
 # Kubernetes
 alias k='kubectl'
 
