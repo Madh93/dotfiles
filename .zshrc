@@ -161,6 +161,9 @@ c() {
 # 3) Tools #
 #----------#
 
+#------- asdf ------#
+[ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
+
 #------- AWS ------#
 [ -f /usr/bin/aws_zsh_completer.sh ] && source /usr/bin/aws_zsh_completer.sh
 
@@ -168,7 +171,7 @@ c() {
 export MAKEFLAGS="-j$(($(nproc)+1))"
 
 #-- DigitalOcean --#
-[ -f /usr/local/bin/doctl ] && source <(doctl completion zsh)
+[ -f $HOME/.asdf/shims/doctl ] && source <(doctl completion zsh)
 
 #----- Docker -----#
 dockexec() {
@@ -180,23 +183,6 @@ dockexec() {
 
 #------- Go -------#
 export GOPATH="$HOME/.go"
-export PATH="$GOPATH/bin:$PATH"
-
-#------ Node ------#
-MY_NODE_VERSION='12.16.1'
-
-# (Lazy) Load nvm
-if [ -f /usr/share/nvm/nvm.sh ]; then
-  export NVM_DIR="$HOME/.nvm"
-  alias nvm='unalias nvm node npm && source /usr/share/nvm/nvm.sh && nvm'
-  alias node='unalias nvm node npm && source /usr/share/nvm/nvm.sh && node'
-  alias npm='unalias nvm node npm && source /usr/share/nvm/nvm.sh && npm'
-fi
-
-# Check my node version
-if [[ ! -d $HOME/.nvm/versions/node/v$MY_NODE_VERSION ]]; then
-  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Node $MY_NODE_VERSION is not installed! Try: nvm install $MY_NODE_VERSION"
-fi
 
 #----- Python -----#
 if [[ ! -f $HOME/.pythonrc ]]; then
@@ -205,22 +191,6 @@ if [[ ! -f $HOME/.pythonrc ]]; then
 fi
 
 export PYTHONSTARTUP=$HOME/.pythonrc
-
-#------ Ruby ------#
-MY_RUBY_VERSION='2.7.1'
-
-# Load chruby
-[ -f /usr/share/chruby/chruby.sh ] && source /usr/share/chruby/chruby.sh
-
-# Enable chruby auto-switching feature
-[ -f /usr/share/chruby/auto.sh ] && source /usr/share/chruby/auto.sh
-
-# Set default ruby version
-if [[ -d $HOME/.rubies/ruby-$MY_RUBY_VERSION ]]; then
-  [[ $USER == $USER ]] && chruby ruby-$MY_RUBY_VERSION
-else
-  echo -e "\e[5m\e[43m[WARNING]\e[25m\e[49m Ruby $MY_RUBY_VERSION is not installed! Try: ruby-install ruby $MY_RUBY_VERSION"
-fi
 
 #------ SSH ------#
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
