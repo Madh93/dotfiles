@@ -232,6 +232,7 @@ alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> 
 alias clip='xclip -selection clipboard' # Copy to clipboard
 lowercase() { awk '{print tolower($0)}' }
 uppercase() { awk '{print toupper($0)}' }
+json() { jq -r | python -m json.tool | jq $1 }
 
 # Powerlevel9k Theme
 alias theme-down='prompt_powerlevel9k_teardown'
