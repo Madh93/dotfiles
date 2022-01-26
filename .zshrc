@@ -70,6 +70,7 @@ zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
 zplug "plugins/bundler", from:oh-my-zsh   # Bundler completions
 zplug "plugins/dotenv", from:oh-my-zsh    # Automatically load variables from .env file
+zplug "plugins/docker-compose", from:oh-my-zsh    # Docker Compose completions
 zplug "plugins/golang", from:oh-my-zsh, ignore:oh-my-zsh.sh, defer:3   # Golang completions
 zplug "plugins/pip", from:oh-my-zsh   # Pip completions
 zplug "plugins/terraform", from:oh-my-zsh   # Terraform completions
