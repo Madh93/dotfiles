@@ -234,6 +234,22 @@ alias clip='xclip -selection clipboard' # Copy to clipboard
 lowercase() { awk '{print tolower($0)}' }
 uppercase() { awk '{print toupper($0)}' }
 json() { jq -r | python -m json.tool | jq $1 }
+countdown() { # Usage example: countdown 60
+    start="$(( $(date '+%s') + $1))"
+    while [[ $start -ge $(date +%s) ]]; do
+        time="$(( $start - $(date +%s) ))"
+        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+        sleep 0.1
+    done
+}
+stopwatch() {
+    start=$(date +%s)
+    while true; do
+        time="$(( $(date +%s) - $start))"
+        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+        sleep 0.1
+    done
+}
 
 # Powerlevel9k Theme
 alias theme-down='prompt_powerlevel9k_teardown'
