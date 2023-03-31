@@ -15,8 +15,8 @@
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=100000   # Lines in memory
-SAVEHIST=100000   # Lines in disk
+HISTSIZE=200000   # Lines in memory
+SAVEHIST=200000   # Lines in disk
 setopt EXTENDED_HISTORY   # Add timestamps to history
 setopt APPEND_HISTORY     # Append history instead of replace
 setopt INC_APPEND_HISTORY # Append command inmediately is entered
