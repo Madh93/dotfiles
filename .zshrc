@@ -230,7 +230,7 @@ alias please='sudo'
 alias dot="$HOME/.dotfiles"
 alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
 alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
-alias clip='xclip -selection clipboard' # Copy to clipboard
+alias clip='xclip -rmlastnl -selection clipboard' # Copy to clipboard
 lowercase() { awk '{print tolower($0)}' }
 uppercase() { awk '{print toupper($0)}' }
 json() { jq -r | python -m json.tool | jq $1 }
