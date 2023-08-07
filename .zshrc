@@ -82,6 +82,7 @@ zplug "tmuxinator/tmuxinator", use:"completion/tmuxinator.zsh"  # Tmuxinator com
 zplug "lukechilds/zsh-better-npm-completion", defer:2   # NPM completions
 zplug "zsh-users/zsh-autosuggestions", defer:2       # Fish-like autosuggestions
 zplug "zsh-users/zsh-syntax-highlighting", defer:3   # Fish-like syntax highlighting
+zplug "MichaelAquilina/zsh-you-should-use", defer:3  # Reminds me that I should use one of my existing aliases
 
 # Install plugins
 if ! zplug check --verbose; then
