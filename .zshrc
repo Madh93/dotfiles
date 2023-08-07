@@ -20,6 +20,7 @@ SAVEHIST=200000   # Lines in disk
 setopt EXTENDED_HISTORY   # Add timestamps to history
 setopt APPEND_HISTORY     # Append history instead of replace
 setopt INC_APPEND_HISTORY # Append command inmediately is entered
+setopt SHARE_HISTORY      # Share history between all sessions
 setopt HIST_IGNORE_SPACE  # Do not remember commands that start with a whitespace
 
 # General options
