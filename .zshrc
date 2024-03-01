@@ -196,7 +196,7 @@ fi
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 #------ SSH ------#
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+[ ! -f /.dockerenv ] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 #----- Tmux ------#
 if [[ ! -f /usr/local/bin/tmux-window ]] && [[ -w /usr/local/bin ]]; then
