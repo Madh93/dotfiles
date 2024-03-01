@@ -42,7 +42,7 @@ bindkey '^[[1~' beginning-of-line   # Home: go to the beginning of line in Tmux
 bindkey '^[[F' end-of-line          # End: go to the end of line
 bindkey '^[[4~' end-of-line         # End: go to the end of line in Tmux
 bindkey '^R' history-incremental-search-backward  # Ctrl + R: search history in Tmux
-bindkey -s '^P' '/usr/local/bin/tmux-window\n'  # Ctrl + P: fuzzy search to find Tmux windows
+[[ ! -f /usr/local/bin/tmux-window ]] && bindkey -s '^P' '/usr/local/bin/tmux-window\n'  # Ctrl + P: fuzzy search to find Tmux windows
 
 # Completion
 zstyle ':completion:*' menu select  # Show interactive menu to select directory
@@ -199,7 +199,7 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 #----- Tmux ------#
-if [[ ! -f /usr/local/bin/tmux-window ]]; then
+if [[ ! -f /usr/local/bin/tmux-window ]] && [[ -w /usr/local/bin ]]; then
   echo "#! /bin/bash" >> /usr/local/bin/tmux-window
   echo "tmux select-window -t\$(tmux list-sessions | grep attached | cut -d ':' -f1):\$(tmux list-windows | fzf | cut -d ':' -f1)" >> /usr/local/bin/tmux-window
   chmod +x /usr/local/bin/tmux-window || echo "Permissions issues to add tmux-window"

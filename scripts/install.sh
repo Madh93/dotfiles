@@ -40,5 +40,5 @@ echo "[Dotfiles] Installing packages. OK!"
 
 # Bootstrap
 if [ ! -f ../.bootstrapped ]; then
-  ./bootstrap.sh
+  ./scripts/bootstrap.sh
 fi
