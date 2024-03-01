@@ -235,7 +235,9 @@ alias pubkey='more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '\''=> 
 alias clip='xclip -rmlastnl -selection clipboard' # Copy to clipboard
 lowercase() { awk '{print tolower($0)}' }
 uppercase() { awk '{print toupper($0)}' }
-json() { jq -r | python -m json.tool | jq $1 }
+json() { dasel --color -r json }
+yaml() { dasel --color -r yaml }
+xml() { dasel --color -r xml }
 countdown() { # Usage example: countdown 60
     start="$(( $(date '+%s') + $1))"
     while [[ $start -ge $(date +%s) ]]; do
