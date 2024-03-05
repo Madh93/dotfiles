@@ -186,6 +186,7 @@ dockexec() {
 
 #------- Go -------#
 export GOPATH="$HOME/.go"
+[ -d $HOME/.go ] && export PATH=$HOME/.go/bin:$PATH
 
 #----- Python -----#
 if [[ ! -f $HOME/.pythonrc ]]; then
