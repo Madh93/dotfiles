@@ -18,9 +18,14 @@ set history=10000   " increase history size
 " 2) Vim-Plug plugins "
 "---------------------"
 
-" Vim-Plug installation here: https://github.com/junegunn/vim-plug
+" Check if Vim-Plug is installed: https://github.com/junegunn/vim-plug/issues/225#issuecomment-891314455
+let data_dir = '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Iinit Vim-Plug
+" Init Vim-Plug
 call plug#begin('~/.vim/plugged/')
 
 "-----------------

@@ -33,9 +33,6 @@ else
   echo "[Dotfiles] Unknown Operating System. Skipping packages installation..."
 fi
 
-# Install vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 echo "[Dotfiles] Installing packages. OK!"
 
 # Bootstrap
