@@ -42,7 +42,7 @@ bindkey '^[[1~' beginning-of-line   # Home: go to the beginning of line in Tmux
 bindkey '^[[F' end-of-line          # End: go to the end of line
 bindkey '^[[4~' end-of-line         # End: go to the end of line in Tmux
 bindkey '^R' history-incremental-search-backward  # Ctrl + R: search history in Tmux
-[[ ! -f /usr/local/bin/tmux-window ]] && bindkey -s '^P' '/usr/local/bin/tmux-window\n'  # Ctrl + P: fuzzy search to find Tmux windows
+[[ -f /usr/local/bin/tmux-window ]] && bindkey -s '^P' '/usr/local/bin/tmux-window\n'  # Ctrl + P: fuzzy search to find Tmux windows
 
 # Completion
 zstyle ':completion:*' menu select  # Show interactive menu to select directory
