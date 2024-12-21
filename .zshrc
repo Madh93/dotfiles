@@ -58,7 +58,7 @@ stty -ixon
 # Check if zplug is installed
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug ~/.zplug
-    source ~/.zplug/init.zsh && zplug update --self
+    source ~/.zplug/init.zsh && zplug update
 fi
 
 # Load zplug
@@ -68,6 +68,7 @@ source ~/.zplug/init.zsh
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 
 # Plugins
+zplug 'zplug/zplug', hook-build:'zplug --self-manage' # Manage zplug itself
 zplug "plugins/pj", from:oh-my-zsh    # Projects jump directly
 zplug "plugins/bundler", from:oh-my-zsh   # Bundler completions
 zplug "plugins/dotenv", from:oh-my-zsh    # Automatically load variables from .env file
