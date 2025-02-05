@@ -166,7 +166,8 @@ c() {
 #----------#
 
 #------- asdf ------#
-[ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 #------- AWS ------#
 [ -f /usr/bin/aws_zsh_completer.sh ] && source /usr/bin/aws_zsh_completer.sh
