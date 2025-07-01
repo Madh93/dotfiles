@@ -190,6 +190,9 @@ dockexec() {
 export GOPATH="$HOME/.go"
 [ -d $HOME/.go ] && export PATH=$HOME/.go/bin:$PATH
 
+#------ Task ------#
+command -v task &> /dev/null && eval "$(task --completion zsh)"
+
 #----- Python -----#
 if [[ ! -f $HOME/.pythonrc ]]; then
   echo "import rlcompleter, readline" >> $HOME/.pythonrc
