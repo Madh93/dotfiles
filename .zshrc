@@ -303,6 +303,9 @@ alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|r
 alias gcd='git checkout devel'
 alias gcm='git checkout master'
 alias gcb='git checkout -b'
+alias gwa='git worktree add'
+alias gwl='git worktree list'
+alias gwr='git worktree remove'
 gc() { # Git checkout
   local branches branch
   branches=$(git --no-pager branch -vv) &&
