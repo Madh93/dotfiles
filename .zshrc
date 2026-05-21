@@ -237,8 +237,8 @@ alias please='sudo'
 # Utils
 alias dot="$HOME/.dotfiles"
 alias h='fc -lt "| %d-%m-%Y %H:%M:%S |" 1'  # Pretty history output
-alias pubkey='more ~/.ssh/id_rsa.pub | DISPLAY=:0 xclip -selection clipboard | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
-alias clip='DISPLAY=:0 xclip -rmlastnl -selection clipboard' # Copy to clipboard
+alias pubkey='more ~/.ssh/id_rsa.pub | wl-copy | echo '\''=> Public key copied to pasteboard.'\' # Get publick key
+alias clip='wl-copy' # Copy to clipboard
 lowercase() { awk '{print tolower($0)}' }
 uppercase() { awk '{print toupper($0)}' }
 json() { dasel --colour -r json }
