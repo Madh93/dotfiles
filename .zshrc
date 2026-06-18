@@ -23,6 +23,10 @@ setopt INC_APPEND_HISTORY # Append command inmediately is entered
 setopt SHARE_HISTORY      # Share history between all sessions
 setopt HIST_IGNORE_SPACE  # Do not remember commands that start with a whitespace
 
+# Dev Container History Override
+if [[ -d "/dc/shellhistory" ]]; then
+    export HISTFILE="/dc/shellhistory/.zsh_history"
+fi
 # General options
 setopt CORRECT            # Suggest command corrections
 setopt IGNORE_EOF         # Explicit exit with 'logout' or 'exit'
