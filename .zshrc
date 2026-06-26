@@ -328,7 +328,7 @@ gcr() { # Git checkout (remotes included)
 alias pipr='pip install -r requirements.txt'
 alias venv='source .venv/bin/activate'
 venvc() {
-  virtualenv -p python3 .venv && source .venv/bin/activate
+  python3 -m venv .venv && source .venv/bin/activate
   [ -f requirements.txt ] && pip install -r requirements.txt
   [ -f test_requirements.txt ] && pip install -r test_requirements.txt
 }
